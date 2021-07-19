@@ -25,11 +25,13 @@ export function NewRoom(){
         }
         const roomRef = database.ref('rooms')
         const firebaseRoom = await roomRef.push({
-            tittle: inputNewRoom,
+            title: inputNewRoom,
             authorId: User?.id,
         })
 
-        history.push(`rooms/${firebaseRoom.key}`)
+        history.push(`${firebaseRoom.key}`)
+        // Antes estava dando erro com `room/${firebaseRoom.key}` 
+        // É aqui onde eu defino o parametro id dessa rota
     }
 
     return(
